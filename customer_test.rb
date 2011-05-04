@@ -17,4 +17,9 @@ class TestCustomer < Test::Unit::TestCase
     c.add_rental(Rental.new(Movie.new("UP!", Movie::CHILDRENS), 3))
     assert_equal(c.statement, "Rental Record for Usutani\n\tUP!\t1.5\nAmount owed is 1.5\nYou earned 1 frequent renter points")
   end
+
+  def test_html
+    c = Customer.new("Usutani")
+    assert_equal(c.html_statement, "<h1>Rentals for <em>Usutani</em></h1><p>\n<p>You owe <em>0</em><p>\nOn this rental you earned <em>0</em> frequent renter points<p>")
+  end
 end
